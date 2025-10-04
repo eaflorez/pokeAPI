@@ -1,0 +1,171 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*Para commit*/
+/* ESTILOS DEL HTML Y BODY */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url("https://cdn.pixabay.com/photo/2018/06/09/21/37/summer-thunder-storm-3465247_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ESTILOS DEL BUSCADOR */
+.search-container {
+    margin: 20px 0;
+    width: 90%;
+    max-width: 450px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* MEJORAS DEL INPUT */
+.search-input {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    flex-grow: 1;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+    border-color: #ffdeee;
+    box-shadow: 0px 0px 8px rgba(255, 215, 0, 0.5);
+    outline: none;
+}
+
+/* MEJORAS DEL BOTÓN */
+.search-button {
+    padding: 10px 20px;
+    background-color: #cc0000;
+    color: white;
+    border: 2px solid #ffdeee;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-button:hover {
+    background-color: #ffeeee;
+}
+
+.search-button:active {
+    transform: scale(0.98);
+}
+
+/* ESTILOS ESPECÍFICOS DEL TÍTULO DEL BUSCADOR */
+.search-container .titulo {
+    font-size: 1.5rem;
+    color: #333;
+    text-shadow: none;
+}
+
+/* TARJETA PRINCIPAL (CARD) */
+.card {
+    border: none;
+    border-radius: 15px;
+    margin: 15px auto 0;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* TÍTULOS Y TEXTO DE LA TARJETA */
+.titulof {
+    font-size: 2.8rem;
+    text-align: center;
+    color: #ffde00;
+    text-shadow: 1px 1px 3px #eee;
+    margin-bottom: 8px;
+}
+
+.pokemon-name {
+    color: #007bff;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    margin: 8px 0;
+}
+
+/* ESTILOS PARA EL TÍTULO PRINCIPAL DE LA TARJETA */
+.cardTitle {
+    font-size: 2.5rem;
+    color: gold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* IMAGEN DEL POKEMON */
+.pokemon-display {
+    width: 100%;
+}
+
+.pokemon-img {
+    width: 80%;
+    height: auto;
+    max-height: 188px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+    filter: drop-shadow(0 8px 10px rgba(255, 255, 0, 0.7));
+}
+
+/* CAJA DE MENSAJES */
+.message-box {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ESTILOS DE LOS TIPOS DE POKEMON */
+.pokemon-info {
+    margin-top: 15px;
+    text-align: left;
+    width: 100%;
+    background-color: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.pokemon-info p, 
+.pokemon-info ul {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.pokemon-info ul {
+    padding-left: 20px;
+}
