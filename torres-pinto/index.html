@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="search-container">
+        <h2 class="titulo">Buscador Pokédex</h2>
+        
+        <!-- Name search section -->
+        <div class="search-section">
+            <label for="inputPokemon">Buscar por Nombre:</label>
+            <div class="search-actions">
+                <input type="text" id="inputPokemon" class="search-input" placeholder="Escribe el nombre del Pokémon">
+                <button id="btnBuscar" class="search-button">Buscar</button>
+            </div>
+        </div>
+        
+        <!-- ID search section -->
+        <div class="search-section">
+            <label for="inputPokemonId">Buscar por ID:</label>
+            <div class="search-actions">
+                <input type="number" id="inputPokemonId" class="search-input" placeholder="Escribe el ID del Pokémon" min="1" max="1010">
+                <button id="btnBuscarId" class="search-button">Buscar por ID</button>
+            </div>
+        </div>
+        
+        <div id="statusMessage" class="message-box"></div>
+    </div>
+
+    <section class="card" id="pokemonCard">
+        <h1 class="titulo" id="cardTitle">Cargando...</h1>
+        <div class="pokemon-display">
+            <h2 id="result_name" class="pokemon-name"></h2>
+            <img class="pokemon-img" src="" id="result_img" alt="Pokémon">
+            
+            <!-- Detailed information section -->
+            <div class="pokemon-details" id="pokemonDetails">
+                <div class="detail-item">
+                    <span class="detail-label">ID:</span>
+                    <span class="detail-value" id="result_id"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Peso:</span>
+                    <span class="detail-value" id="result_weight"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Altura:</span>
+                    <span class="detail-value" id="result_height"></span>
+                </div>
+                <div class="detail-item abilities-section">
+                    <span class="detail-label">Habilidades:</span>
+                    <ul class="abilities-list" id="result_abilities"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
