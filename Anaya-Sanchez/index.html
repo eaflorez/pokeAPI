@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeDex Mejorada</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="pokedex">
+    <div class="header">
+      <h1>Pokédex</h1>
+    </div>
+
+    <!-- Buscadores -->
+    <div class="buscadores">
+      <input type="text" id="inputNombre" placeholder="Buscar Pokémon por nombre">
+      <button id="btnBuscarNombre">🔎 Nombre</button>
+
+      <input type="number" id="inputId" placeholder="Buscar Pokémon por ID">
+      <button id="btnBuscarId">🔢 ID</button>
+    </div>
+
+    <!-- Resultados -->
+    <div class="resultCard">
+      <h2 id="titulo">¡Pokémon Encontrado!</h2>
+      <h3 id="nombre"></h3>
+
+      <!-- Imagen + habilidades en fila -->
+      <div class="resultContent">
+        <div class="img-container">
+          <img id="imagen" alt="Imagen del Pokémon">
+        </div>
+        
+        <div class="habilidades-box">
+          <h4>Habilidades</h4>
+          <ul id="habilidades"></ul>
+        </div>
+      </div>
+
+      <!-- Datos básicos -->
+      <p><strong>ID:</strong> <span id="idPokemon"></span></p>
+      <p><strong>Peso:</strong> <span id="peso"></span></p>
+      <p><strong>Altura:</strong> <span id="altura"></span></p>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

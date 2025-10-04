@@ -1,0 +1,178 @@
+/* --- NUEVO ESTILO MODERNO Y PROFESIONAL (Pokédex Cool v2) --- */
+
+:root {
+    --color-primario: #00bcd4;
+    --color-secundario: #0097a7;
+    --color-fondo: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    --color-blanco: #ffffff;
+    --color-texto: #02475e;
+    --sombra-suave: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--color-fondo);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- TARJETA PRINCIPAL --- */
+.card {
+    background: var(--color-blanco);
+    border-radius: 20px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: var(--sombra-suave);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- TÍTULO --- */
+h1, h2, h4 {
+    color: var(--color-secundario);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* --- INPUT Y BOTÓN --- */
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #b2ebf2;
+    width: 75%;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+input:focus {
+    border-color: var(--color-primario);
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--color-primario);
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: var(--color-secundario);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* --- MENSAJE DE ESTADO --- */
+.message-box {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--color-secundario);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    padding: 8px;
+}
+
+/* --- CONTENEDOR DE RESULTADOS --- */
+.resultCard {
+    margin-top: 25px;
+    background: #f0fcff;
+    border-radius: 20px;
+    border: 1px solid #b2ebf2;
+    padding: 15px;
+    box-shadow: var(--sombra-suave);
+}
+
+/* --- DISTRIBUCIÓN INTERNA --- */
+.resultContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- IMAGEN DEL POKÉMON --- */
+.img-container img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    background: #e0f7fa;
+    border-radius: 50%;
+    border: 4px solid var(--color-primario);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.img-container img:hover {
+    transform: scale(1.05);
+}
+
+/* --- HABILIDADES --- */
+.habilidades-box {
+    background: var(--color-blanco);
+    border-radius: 15px;
+    padding: 10px;
+    width: 160px;
+    border: 1px solid #b2ebf2;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.habilidades-box h4 {
+    color: var(--color-secundario);
+    font-size: 1rem;
+    border-bottom: 2px solid #e0f7fa;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+}
+
+.habilidades-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.habilidades-box li {
+    background: #f4fcff;
+    margin: 5px 0;
+    padding: 6px 8px 6px 20px;
+    border-radius: 8px;
+    position: relative;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.habilidades-box li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-primario);
+    border-radius: 50%;
+}
+
+.habilidades-box li:hover {
+    background: #e0f7fa;
+}
