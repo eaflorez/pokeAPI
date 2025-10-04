@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Práctico - Mejorando la Pokédex</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="search-container">
+        <h2 class="titulo">Ejercicio Práctico: ¡Mejorando la Pokédex!</h2>
+
+        <p style="margin-bottom:10px; text-align:center;">
+            <strong>Autor:</strong> Jonathan Steven Gelvez Peña
+        </p>
+
+        <p style="margin-bottom:15px; text-align:center;">
+            Busca Pokémon por <strong>nombre</strong> o por <strong>ID</strong> para ver información detallada.
+        </p>
+
+        <div class="search-actions">
+            <input type="text" id="inputNombre" class="search-input" placeholder="Buscar por nombre">
+            <button id="btnBuscarNombre" class="search-button">Buscar Nombre</button>
+        </div>
+
+        <div class="search-actions">
+            <input type="number" id="inputID" class="search-input" placeholder="Buscar por ID">
+            <button id="btnBuscarID" class="search-button">Buscar ID</button>
+        </div>
+
+        <div id="statusMessage" class="message-box"></div>
+    </div>
+
+    <section class="card" id="pokemonCard" style="display:none;">
+        <h1 class="titulo" id="cardTitle">Pokémon Encontrado</h1>
+
+        <div class="pokemon-display">
+            <h2 id="result_name" class="pokemon-name"></h2>
+            <img class="pokemon-img" src="" id="result_img" alt="Pokémon">
+        </div>
+
+        <div class="pokemon-info" style="margin-top:15px; text-align:left; width:100%;">
+            <p><strong>ID:</strong> <span id="result_id"></span></p>
+            <p><strong>Peso:</strong> <span id="result_weight"></span> kg</p>
+            <p><strong>Altura:</strong> <span id="result_height"></span> m</p>
+            <p><strong>Habilidades:</strong></p>
+            <ul id="result_abilities"></ul>
+        </div>
+    </section>
+
+    <script>
+        // --- Función para acceder rápido a elementos ---
+        const $ = (id) => document.getElementById(id);
+
+        // --- Elementos del DOM ---
+        const card = $("pokemonCard");
+        const nameEl = $("result_name");
+        const imgEl = $("result_img");
+        const idEl = $("result_id");
+        const weightEl = $("result_weight");
+        const heightEl = $("result_height");
+        const abilitiesEl = $("result_abilities");
+        const statusEl = $("statusMessage");
+
+        const inputNombre = $("inputNombre");
+        const inputID = $("inputID");
+        const btnBuscarNombre = $("btnBuscarNombre");
+        const btnBuscarID = $("btnBuscarID");
+
+        // --- Función para obtener datos desde la API ---
+        const obtenerPokemon = async (valor) => {
+            try {
+                statusEl.textContent = "Buscando Pokémon...";
+                const url = `https://pokeapi.co/api/v2/pokemon/${valor}`;
+                const resp = await fetch(url);
+                if (!resp.ok) throw new Error("Pokémon no encontrado");
+                const data = await resp.json();
+                mostrarDatos(data);
+                statusEl.textContent = `¡${data.name} encontrado!`;
+            } catch (error) {
+                statusEl.textContent = error.message;
+                card.style.display = "none";
+            }
+        };
+
+        // --- Función para mostrar los datos en pantalla ---
+        const mostrarDatos = (data) => {
+            card.style.display = "block";
+            nameEl.textContent = data.name;
+            imgEl.src = data.sprites.other.dream_world.front_default || data.sprites.front_default;
+            imgEl.alt = `Imagen de ${data.name}`;
+            idEl.textContent = data.id;
+            weightEl.textContent = (data.weight / 10).toFixed(1);
+            heightEl.textContent = (data.height / 10).toFixed(1);
+
+            // Mostrar habilidades
+            abilitiesEl.innerHTML = "";
+            data.abilities.forEach(hab => {
+                const li = document.createElement("li");
+                li.textContent = hab.ability.name;
+                abilitiesEl.appendChild(li);
+            });
+        };
+
+        // --- Eventos ---
+        btnBuscarNombre.addEventListener("click", () => {
+            const nombre = inputNombre.value.trim().toLowerCase();
+            if (!nombre) {
+                statusEl.textContent = "Por favor ingrese un nombre.";
+                return;
+            }
+            obtenerPokemon(nombre);
+        });
+
+        btnBuscarID.addEventListener("click", () => {
+            const id = inputID.value.trim();
+            if (!id) {
+                statusEl.textContent = "Por favor ingrese un ID.";
+                return;
+            }
+            obtenerPokemon(id);
+        });
+    </script>
+
+</body>
+</html>
