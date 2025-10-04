@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff5757, #ffd057);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0px 5px 12px rgba(0,0,0,0.25);
+}
+
+input {
+  padding: 6px;
+  margin: 4px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 75%;
+}
+
+button {
+  padding: 8px;
+  margin: 4px;
+  border: none;
+  border-radius: 8px;
+  background: #ff3e3e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+button:hover {
+  background: #cc2f2f;
+}
+
+.resultCard {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff5f5;                 /* fondo suave */
+  border: 3px solid #ff3e3e;           /* borde llamativo */
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);  /* sombra */
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.resultCard:hover {
+  transform: scale(1.02);              /* efecto hover sutil */
+}
+
+/* Contenedor en dos columnas: imagen y habilidades */
+.resultContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+/* Imagen más compacta */
+.img-container img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+/* Recuadro de habilidades */
+.habilidades-box {
+  background: #ffeaea;
+  border: 2px solid #ff3e3e;
+  border-radius: 10px;
+  padding: 8px;
+  width: 120px;
+  text-align: left;
+  font-size: 0.85rem;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.15);
+}
+
+.habilidades-box h4 {
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+  color: #cc2f2f;
+  text-align: center;
+}
+
+.habilidades-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.habilidades-box li {
+  background: #fff;
+  margin: 3px 0;
+  padding: 3px 5px;
+  border-radius: 6px;
+  border-left: 4px solid #ff3e3e;
+}
