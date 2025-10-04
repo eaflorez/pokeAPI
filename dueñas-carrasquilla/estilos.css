@@ -1,0 +1,193 @@
+/* ====== Tema Pokédex + Anti-overflow ====== */
+:root{
+  --poke-red:#ef5350;
+  --poke-red-dark:#b71c1c;
+  --poke-yellow:#ffde00;
+  --poke-blue:#3b4cca;
+  --card-bg:#2b2b2b;
+  --ink:#ffffff;
+  --ink-sub:#cfd8dc;
+  --ok:#00c853;
+  --error-bg:#f8d7da;
+  --error-ink:#721c24;
+  --shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ height:100%; }
+body{
+  min-height:100vh;
+  padding:20px;
+  display:flex; flex-direction:column; align-items:center;
+  color:var(--ink);
+  /* fondo con “pokéballs” sutiles */
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.06) 0 18%, transparent 19% 100%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.06) 0 18%, transparent 19% 100%),
+    linear-gradient(180deg, #101218 0%, #1a1d25 100%);
+}
+
+/* ---------- Contenedor de búsqueda ---------- */
+.search-container{
+  width:min(92vw, 560px);
+  padding:16px;
+  background:rgba(255,255,255,.9);
+  color:#222;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  overflow:hidden;            /* evita desbordes visuales */
+}
+.search-container .titulo{
+  font-size:clamp(1rem, 1.2rem + .4vw, 1.5rem);
+  color:#333; text-shadow:none; margin-bottom:8px;
+  line-height:1.15;
+  overflow-wrap:anywhere;     /* nombres larguísimos no rompen el layout */
+}
+.search-actions{
+  display:flex; gap:10px; margin-top:10px;
+  flex-wrap:wrap;             /* evita que input+botón se salgan en pantallas pequeñas */
+}
+
+/* Input */
+.search-input{
+  flex:1 1 240px;             /* crece y reduce, pero con base razonable */
+  min-width:0;                /* IMPORTANT: permite encoger dentro de flex */
+  padding:12px 14px;
+  border:2px solid #ccc; border-radius:999px;
+  font-size:16px; line-height:1.2;
+  transition:border-color .25s, box-shadow .25s;
+  overflow:hidden; text-overflow:ellipsis;
+}
+.search-input:focus{
+  border-color:var(--poke-yellow);
+  box-shadow:0 0 0 4px rgba(255,222,0,.25);
+  outline:none;
+}
+
+/* Botón */
+.search-button{
+  flex:0 0 auto;
+  padding:12px 18px;
+  background:var(--poke-red);
+  color:#fff; border:2px solid var(--poke-red-dark);
+  border-radius:999px; cursor:pointer;
+  font-weight:700; letter-spacing:.2px;
+  transition:transform .1s, background .2s;
+}
+.search-button:hover{ background:#ff2e2e; }
+.search-button:active{ transform:scale(.98); }
+
+/* Mensajes */
+.message-box{
+  margin-top:10px; padding:10px 12px; border-radius:10px;
+  font-weight:700; text-align:center;
+  background:var(--error-bg); color:var(--error-ink);
+  border:1px solid #f5c6cb;
+  overflow-wrap:anywhere;
+}
+
+/* ---------- Tarjeta / resultados ---------- */
+.card{
+  width:min(92vw, 560px);
+  margin:16px 0 28px;
+  padding:20px;
+  border:none; border-radius:18px;
+  background:
+    linear-gradient(180deg, rgba(59,76,202,.25), transparent 40%),
+    var(--card-bg);
+  box-shadow:var(--shadow);
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  overflow:hidden;             /* nada se sale de la tarjeta */
+  contain:content;             /* mejora rendimiento/aisla layout interno */
+}
+
+#cardTitle{
+  font-size:clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+  color:var(--poke-yellow);
+  text-shadow:2px 2px 0 #000;
+  line-height:1.1; margin-bottom:6px;
+  padding-inline:8px;
+  overflow-wrap:anywhere;
+}
+
+.pokemon-display{ width:100%; }
+
+/* nombre del Pokémon */
+.pokemon-name{
+  color:var(--poke-blue);
+  font-size:clamp(1.1rem, 1rem + .6vw, 1.6rem);
+  text-transform:capitalize; margin:6px 0 8px;
+  padding:0 8px; line-height:1.2;
+  overflow-wrap:anywhere;
+}
+
+/* imagen */
+.pokemon-img{
+  width:min(84%, 340px); max-height:220px;
+  aspect-ratio:1/1;
+  object-fit:contain; object-position:center;
+  margin:8px auto 2px; display:block;
+  filter:drop-shadow(0 0 12px rgba(255,255,0,.6));
+}
+
+/* bloque de detalles (ID, altura, peso, habilidades, etc.) */
+.pokemon-details{
+  width:100%;
+  margin-top:10px; padding:10px 12px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  text-align:left; color:var(--ink-sub);
+  font-size:clamp(.95rem, .9rem + .2vw, 1.05rem);
+  line-height:1.35;
+  /* si hay demasiadas habilidades, mantenlo dentro y permite scroll */
+  max-height:260px; overflow:auto;
+  scrollbar-width:thin; scrollbar-color:#888 transparent;
+}
+.pokemon-details p{ margin:4px 0; }
+.pokemon-details ul{
+  margin:6px 0 0 18px; padding:0; list-style:disc;
+  color:var(--poke-yellow);
+  font-size:clamp(.9rem, .85rem + .2vw, 1rem);
+}
+.pokemon-details li{
+  margin:2px 0; color:var(--ink);
+  overflow-wrap:anywhere;     /* nombres larguísimos no rompen */
+}
+
+/* Chips de tipo (si decides usarlos) */
+.type-badge{
+  display:inline-block; padding:4px 10px; margin:4px 6px 0 0;
+  border-radius:999px; font-weight:700; font-size:.85rem;
+  background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.18);
+  white-space:nowrap;
+}
+
+/* Respeta \n que mandas desde JS (habilidades en líneas separadas) */
+#result_abilities{ white-space:pre-line; overflow-wrap:anywhere; }
+
+/* Utilidades de seguridad contra desbordes */
+.truncate{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.break-any{ overflow-wrap:anywhere; word-break:break-word; }
+
+/* Pequeños ajustes responsivos */
+@media (max-width:380px){
+  .search-button{ width:100%; order:2; }
+  .search-input{ order:1; }
+  .pokemon-img{ width:88%; max-height:200px; }
+  .pokemon-details{ max-height:220px; }
+}
+
+.pokemon-details ul {
+  margin: 6px 0 0 18px;
+  padding: 0;
+  list-style-type: disc;
+  color: var(--poke-yellow);
+  font-size: 1rem;
+}
+
+.pokemon-details li {
+  color: #fff;
+  margin: 2px 0;
+}
+
