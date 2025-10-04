@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex - Una Sola Tarjeta</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <main>
+    <!-- 🔍 Buscador principal -->
+    <section class="search-container" aria-label="Buscador de Pokémon">
+      <h2 class="titulo">Buscador Pokédex</h2>
+      <form class="search-actions" onsubmit="return false;">
+        <input
+          type="text"
+          id="inputPokemon"
+          class="search-input"
+          placeholder="Escribe el nombre del Pokémon"
+          aria-label="Nombre del Pokémon"
+          autocomplete="off"
+        >
+        <button id="btnBuscar" class="search-button" type="submit">Buscar</button>
+      </form>
+      <div id="statusMessage" class="message-box" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- 🃏 Tarjeta del Pokémon -->
+    <section class="card" id="pokemonCard" aria-label="Tarjeta del Pokémon" style="display: none;">
+      <h1 class="titulo" id="cardTitle">Cargando...</h1>
+      <div class="pokemon-display">
+        <h2 id="resultName" class="pokemon-name"></h2>
+        <img
+          class="pokemon-img"
+          src=""
+          id="result_img"
+          alt="Imagen del Pokémon"
+          loading="lazy"
+        >
+      </div>
+    </section>
+  </main>
+
+  <script src="mejora.js"></script>
+</body>
+</html>

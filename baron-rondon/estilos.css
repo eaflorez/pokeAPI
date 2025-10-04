@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url("https://cdn.pixabay.com/photo/2018/09/09/21/37/summer-thunder-storm-3665247_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pokemon-id,
+.pokemon-peso,
+.pokemon-altura {
+  color: #fff;
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.pokemon-habilidades {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.pokemon-habilidades li {
+  background-color: #ff9800;
+  color: #fff;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+
+/* CONTENEDOR DE BÚSQUEDA */
+.search-container {
+    margin: 20px 0;
+    width: 95%;
+    max-width: 450px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* TARJETA PRINCIPAL (CARD) */
+.card {
+    border: none;
+    margin: 15px 30px 0;
+    width: 95%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilos del buscador */
+.search-content {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* ----- ESTILOS DEL INPUT ----- */
+.search-input {
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 5px 10px;
+    flex-grow: 1;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al hacer foco en el input (borde visual) */
+.search-input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+    outline: none;
+}
+
+/* ----- ESTILOS DEL BOTÓN ----- */
+.search-button {
+    padding: 5px 10px;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* Frente al pasar el mouse (hover) y presionar (active) */
+.search-button:hover {
+    background-color: #ff4d4d; /* rojo más brillante al pasar el mouse */
+}
+.search-button:active { /* Pequeño "clic" al presionar */
+    transform: scale(0.96);
+}
+
+/* Estilos para el título del buscador (para sobreescribir .titulo) */
+.search-container .titulo {
+    color: #333;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/* Estilos para el título principal de la tarjeta */
+.card .titulo {
+    font-size: 2.2em;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
