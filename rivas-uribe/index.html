@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokédex - Una Sola Tarjeta</title>
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+    <div class="search-container">
+        <h2 class="titulo">Buscador Pokédex</h2>
+
+        <!-- Búsqueda por Nombre -->
+        <div class="search-actions">
+            <input type="text" id="inputPokemon" class="search-input" placeholder="Escribe el nombre del Pokémon" />
+            <button id="btnBuscar" class="search-button">Buscar</button>
+        </div>
+
+        <!-- Búsqueda por ID -->
+        <div class="search-actions" style="margin-top: 15px;">
+            <input type="text" id="inputPokemonID" class="search-input" placeholder="Escribe el ID del Pokémon" />
+            <button id="btnBuscarID" class="search-button">Buscar por ID</button>
+        </div>
+
+        <div id="statusMessage" class="message-box"></div>
+    </div>
+
+    <section class="card" id="pokemonCard" style="display:none;">
+        <h1 class="titulo" id="cardTitle">Cargando...</h1>
+        
+        <!-- Contenedor de imagen + datos en horizontal -->
+        <div class="card-content">
+            <!-- Columna izquierda: Imagen -->
+            <div class="pokemon-display">
+                <h2 id="result_name" class="pokemon-name"></h2>
+                <img class="pokemon-img" src="" id="result_img" alt="Pokémon" />
+            </div>
+
+            <!-- Columna derecha: Datos -->
+            <div id="extraData" class="extra-info">
+                <p><strong>ID:</strong> <span id="pokemonID"></span></p>
+                <p><strong>Altura:</strong> <span id="pokemonHeight"></span></p>
+                <p><strong>Peso:</strong> <span id="pokemonWeight"></span></p>
+                <p><strong>Habilidades:</strong></p>
+                <ul id="pokemonAbilities"></ul>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
