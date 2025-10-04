@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pokédex - Búsqueda por Nombre e ID</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Pokédex</h1>
+
+    <div class="search-row">
+      <div class="search-block">
+        <input id="searchName" type="text" placeholder="Buscar por nombre (ej. pikachu)" />
+        <button id="btnSearchName">Buscar por nombre</button>
+      </div>
+
+      <div class="search-block">
+        <input id="searchId" type="number" min="1" placeholder="Buscar por ID (ej. 25)" />
+        <button id="btnSearchId">Buscar por ID</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">Cargando...</div>
+
+    <div class="card" id="resultCard">
+      <img id="pokemonImg" src="" alt="Imagen Pokémon" />
+      <div class="card-body">
+        <h2 id="pokemonName">—</h2>
+        <p id="pokemonId"><strong>ID:</strong> —</p>
+        <p id="pokemonHeight"><strong>Altura:</strong> —</p>
+        <p id="pokemonWeight"><strong>Peso:</strong> —</p>
+        <div>
+          <strong>Habilidades:</strong>
+          <ul id="pokemonAbilities"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
