@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI - Mejora</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <!-- Contenedor del buscador -->
+    <div class="search-container">
+        <div class="titulo">Buscador Pokédex</div>
+        <div class="search-actions">
+            <input id="inputBuscar" class="search-input" type="text"
+                placeholder="Escribe el nombre del Pokémon (ej: bulbasaur)">
+            <button id="botonBuscar" class="search-button" type="button">Buscar</button>
+        </div>
+        <div id="mensajeBuscar" class="message-box" style="display:none;"></div>
+    </div>
+
+    <!-- Tarjeta principal -->
+    <div class="card">
+        <div id="cardTitle">Pokédex Mejorada</div>
+        <h2 id="nombreResultado" class="pokemon-name">Nombre</h2>
+
+        <div class="pokemon-display">
+            <img id="imagenResultado" class="pokemon-img" src="" alt="Imagen Pokémon">
+        </div>
+    </div>
+
+    <script src="mejora.js"></script>
+</body>
+
+</html>

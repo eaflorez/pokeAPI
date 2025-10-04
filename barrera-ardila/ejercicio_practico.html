@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Avanzada</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- Contenedor del buscador -->
+  <div class="search-container">
+    <div class="titulo">Buscador Pokédex</div>
+    <div class="search-actions">
+      <input id="inputBuscarNombre" class="search-input" type="text" placeholder="Buscar por nombre">
+      <input id="inputBuscarID" class="search-input" type="number" placeholder="Buscar por ID" min="1" style="max-width:120px;">
+      <button id="botonBuscar" class="search-button" type="button">Buscar</button>
+    </div>
+    <div id="mensajeEP" class="message-box" style="display:none;"></div>
+  </div>
+
+  <!-- Tarjeta principal -->
+  <div class="card">
+    <div id="cardTitle">Pokédex Avanzada</div>
+    <h2 id="nombreResultado" class="pokemon-name">Nombre</h2>
+
+    <div class="pokemon-display">
+      <img id="imagenResultado" class="pokemon-img" src="" alt="Imagen Pokémon">
+    </div>
+
+    <p><strong>ID:</strong> <span id="idPokemon"></span></p>
+    <p><strong>Peso:</strong> <span id="pesoPokemon"></span></p>
+    <p><strong>Altura:</strong> <span id="alturaPokemon"></span></p>
+    <p><strong>Habilidades:</strong> <span id="habilidadesPokemon"></span></p>
+  </div>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    const nombreResultadoEl = $('nombreResultado');
+    const imagenResultadoEl = $('imagenResultado');
+    const idEl = $('idPokemon');
+    const pesoEl = $('pesoPokemon');
+    const alturaEl = $('alturaPokemon');
+    const habilidadesEl = $('habilidadesPokemon');
+    const inputNombre = $('inputBuscarNombre');
+    const inputID = $('inputBuscarID');
+    const botonBuscar = $('botonBuscar');
+    const mensajeEP = $('mensajeEP');
+
+    function mostrarMensajeEP(texto, mostrar = true) {
+      mensajeEP.textContent = texto;
+      mensajeEP.style.display = mostrar ? 'block' : 'none';
+    }
+
+    async function obtenerDatosPokemon(valor) {
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${valor}`);
+      if (!resp.ok) throw new Error('Pokémon no encontrado');
+      return await resp.json();
+    }
+
+    function elegirSprite(datos) {
+      return datos.sprites?.other?.dream_world?.front_default ||
+             datos.sprites?.other?.['official-artwork']?.front_default ||
+             datos.sprites?.front_default ||
+             '';
+    }
+
+    function mostrarPokemonEnTarjeta(datos) {
+      nombreResultadoEl.textContent = datos.name;
+      imagenResultadoEl.src = elegirSprite(datos);
+      imagenResultadoEl.alt = `${datos.name} image`;
+      idEl.textContent = datos.id;
+      pesoEl.textContent = (datos.weight / 10).toFixed(1) + " kg";
+      alturaEl.textContent = (datos.height / 10).toFixed(1) + " m";
+      habilidadesEl.textContent = datos.abilities.map(a => a.ability.name).join(", ");
+    }
+
+    async function buscarPokemon() {
+      const nombre = inputNombre.value.trim();
+      const id = inputID.value.trim();
+
+      if (!nombre && !id) {
+        mostrarMensajeEP('Ingresa un nombre o un ID para buscar.');
+        return;
+      }
+
+      try {
+        mostrarMensajeEP('', false);
+        nombreResultadoEl.textContent = 'Buscando...';
+        imagenResultadoEl.src = '';
+
+        const valor = nombre || id;
+        const datos = await obtenerDatosPokemon(valor);
+        mostrarPokemonEnTarjeta(datos);
+      } catch (err) {
+        mostrarMensajeEP('No se encontró el Pokémon.');
+        nombreResultadoEl.textContent = 'No encontrado';
+        imagenResultadoEl.src = '';
+        idEl.textContent = '';
+        pesoEl.textContent = '';
+        alturaEl.textContent = '';
+        habilidadesEl.textContent = '';
+      }
+    }
+
+    botonBuscar.addEventListener('click', buscarPokemon);
+    inputNombre.addEventListener('keypress', e => { if (e.key === 'Enter') buscarPokemon(); });
+    inputID.addEventListener('keypress', e => { if (e.key === 'Enter') buscarPokemon(); });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      obtenerDatosPokemon('pikachu').then(mostrarPokemonEnTarjeta);
+    });
+  </script>
+</body>
+</html>
