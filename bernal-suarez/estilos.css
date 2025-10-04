@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background: url("https://cdn.pixabay.com/photo/2018/06/09/21/37/summer-thunder-storm-3465247_1280.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CONTENEDOR DE BÚSQUEDA */
+.search-container {
+  margin-top: 20px;
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+/* TARJETA PRINCIPAL (CARD) */
+.card {
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: white;
+}
+
+/* TÍTULOS Y TEXTO */
+.titulo {
+  font-size: 2.2rem;
+  text-align: center;
+  color: #ffde00;
+  text-shadow: 1px 1px #000;
+  margin-bottom: 8px;
+}
+
+.pokemon-name {
+  color: #2f67f6;
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  margin: 8px 0;
+}
+
+/* IMAGEN DEL POKÉMON */
+.pokemon-display {
+  width: 100%;
+}
+.pokemon-img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin: 10px auto;
+  display: block;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}
+
+.message-box {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* --- Estilos del buscador --- */
+.search-actions {
+  margin: 10px;
+}
+
+.search-input {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  width: 70%;
+  margin-right: 5px;
+}
+
+.search-input:focus {
+  border-color: #2f67f6;
+  outline: none;
+  box-shadow: 0 0 5px rgba(47, 103, 246, 0.8);
+}
+
+.search-button {
+  background-color: #2f67f6;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #1e3fa8;
+}
