@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio Práctico - Joan Bernal</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="search-container">
+    <h2 class="titulo">Ejercicio Práctico</h2>
+    <p style="color:white; text-align:center;">Alumno: <b>Joan Bernal</b></p>
+
+    <!-- Búsqueda por Nombre -->
+    <div class="search-actions">
+      <input type="text" id="inputNombre" class="search-input" placeholder="Escribe el nombre del Pokémon">
+      <button id="btnBuscarNombre" class="search-button">Buscar por Nombre</button>
+    </div>
+
+    <!-- Búsqueda por ID -->
+    <div class="search-actions">
+      <input type="number" id="inputId" class="search-input" placeholder="Escribe el ID del Pokémon">
+      <button id="btnBuscarId" class="search-button">Buscar por ID</button>
+    </div>
+
+    <div id="statusMessage" class="message-box"></div>
+  </div>
+
+  <section class="card" id="pokemonCard">
+    <h1 class="titulo" id="cardTitle">Esperando búsqueda...</h1>
+    <div class="pokemon-display">
+      <h2 id="nombre" class="pokemon-name"></h2>
+      <img class="pokemon-img" src="" id="imagen" alt="Pokémon">
+      <p><b>ID:</b> <span id="id"></span></p>
+      <p><b>Peso:</b> <span id="peso"></span></p>
+      <p><b>Altura:</b> <span id="altura"></span></p>
+      <p><b>Habilidades:</b></p>
+      <ul id="habilidades"></ul>
+    </div>
+  </section>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    const nombre = $("nombre");
+    const imagen = $("imagen");
+    const id = $("id");
+    const peso = $("peso");
+    const altura = $("altura");
+    const habilidades = $("habilidades");
+    const statusMessage = $("statusMessage");
+    const cardTitle = $("cardTitle");
+
+    async function obtenerPokemon(q) {
+      const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${q}`);
+      if (!resp.ok) throw new Error("No encontrado");
+      return resp.json();
+    }
+
+    function mostrarDatos(datos) {
+      cardTitle.textContent = "¡Pokémon Encontrado!";
+      nombre.textContent = datos.name.toUpperCase();
+      imagen.src =
+        datos.sprites.other?.["official-artwork"]?.front_default ||
+        datos.sprites.other?.dream_world?.front_default ||
+        datos.sprites.front_default;
+      imagen.alt = datos.name;
+      id.textContent = datos.id;
+      peso.textContent = datos.weight;
+      altura.textContent = datos.height;
+
+      habilidades.innerHTML = "";
+      datos.abilities.forEach(h => {
+        const li = document.createElement("li");
+        li.textContent = h.ability.name;
+        habilidades.appendChild(li);
+      });
+    }
+
+    async function buscarPorNombre() {
+      const valor = $("inputNombre").value.trim().toLowerCase();
+      if (!valor) {
+        statusMessage.textContent = "Debe ingresar un nombre";
+        return;
+      }
+      try {
+        statusMessage.textContent = "Buscando por nombre...";
+        const datos = await obtenerPokemon(valor);
+        mostrarDatos(datos);
+        statusMessage.textContent = "";
+      } catch (err) {
+        statusMessage.textContent = "Pokémon no encontrado por nombre";
+        limpiarDatos();
+      }
+    }
+
+    async function buscarPorId() {
+      const valor = $("inputId").value.trim();
+      if (!valor) {
+        statusMessage.textContent = "Debe ingresar un ID";
+        return;
+      }
+      try {
+        statusMessage.textContent = "Buscando por ID...";
+        const datos = await obtenerPokemon(valor);
+        mostrarDatos(datos);
+        statusMessage.textContent = "";
+      } catch (err) {
+        statusMessage.textContent = "Pokémon no encontrado por ID";
+        limpiarDatos();
+      }
+    }
+
+    function limpiarDatos() {
+      cardTitle.textContent = "No encontrado";
+      nombre.textContent = "";
+      imagen.removeAttribute("src");
+      id.textContent = peso.textContent = altura.textContent = "-";
+      habilidades.innerHTML = "";
+    }
+
+    $("btnBuscarNombre").addEventListener("click", buscarPorNombre);
+    $("inputNombre").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") buscarPorNombre();
+    });
+
+    $("btnBuscarId").addEventListener("click", buscarPorId);
+    $("inputId").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") buscarPorId();
+    });
+  </script>
+</body>
+</html>
