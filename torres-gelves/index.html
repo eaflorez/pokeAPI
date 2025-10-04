@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex Mejorada</title>
+    <link rel="stylesheet" href="mejora.css">
+</head>
+<body>
+
+    <div class="global-search-container">
+        <div class="search-container">
+            <h2 class="titulo">Buscador por Nombre</h2>
+            <div class="search-actions">
+                <input type="text" id="inputPokemonNombre" class="search-input" placeholder="Escribe el nombre">
+                <button id="btnBuscarNombre" class="search-button">Buscar</button>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <h2 class="titulo">Buscador por ID</h2>
+            <div class="search-actions">
+                <input type="number" id="inputPokemonId" class="search-input" placeholder="Escribe el ID">
+                <button id="btnBuscarId" class="search-button">Buscar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="statusMessage" class="message-box" style="visibility: hidden;"></div>
+
+    <section class="card" id="pokemonCard" style="display: none;">
+        <h1 class="titulo" id="cardTitle"></h1>
+        <div class="pokemon-display">
+            <h2 id="result_name" class="pokemon-name"></h2>
+            <img class="pokemon-img" src="" id="result_img" alt="Pokémon">
+            <div id="pokemon-info" class="pokemon-info-container">
+                <p><strong>ID:</strong> <span id="pokemon-id"></span></p>
+                <p><strong>Peso:</strong> <span id="pokemon-weight"></span> kg</p>
+                <p><strong>Altura:</strong> <span id="pokemon-height"></span> m</p>
+                <div id="pokemon-abilities-container">
+                    <strong>Habilidades:</strong>
+                    <ul id="pokemon-abilities"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="mejora.js"></script>
+</body>
+</html>

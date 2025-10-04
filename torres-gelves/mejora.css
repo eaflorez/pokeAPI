@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: url("https://cdn.pixabay.com/photo/2018/06/09/21/37/summer-thunder-storm-3465247_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.global-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; 
+    width: 100%;
+    max-width: 920px; 
+    flex-wrap: wrap; 
+}
+
+.search-container {
+    margin: 0; 
+    width: 100%;
+    max-width: 450px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex: 1 1 400px; 
+}
+
+.search-container .titulo {
+    font-size: 1.5rem;
+    color: #333;
+    text-shadow: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.search-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-input {
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    flex-grow: 1;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus {
+    border-color: #ffde00;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    outline: none;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #cc0000;
+    color: white;
+    border: 2px solid #800000;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-button:hover {
+    background-color: #ff0000;
+}
+
+.search-button:active {
+    transform: scale(0.98);
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#cardTitle {
+    font-size: 2.5rem;
+    color: gold;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.pokemon-name {
+    color: #007bff;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    margin: 8px 0;
+}
+
+.pokemon-display {
+    width: 100%;
+}
+
+.pokemon-img {
+    width: 80%;
+    height: auto;
+    max-height: 180px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.7));
+}
+
+.pokemon-info-container {
+    text-align: left;
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px); 
+}
+
+.pokemon-info-container p {
+    margin: 10px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.pokemon-info-container p strong {
+    color: #ffde00; 
+}
+
+#pokemon-abilities-container {
+    margin-top: 15px;
+}
+
+#pokemon-abilities {
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; 
+    margin-top: 8px;
+}
+
+#pokemon-abilities li {
+    background-color: #007bff; 
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px; 
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#pokemon-abilities li:hover {
+    transform: translateY(-2px);
+    background-color: #0056b3;
+}
+
+.message-box {
+    width: 100%;
+    max-width: 920px;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    visibility: visible;
+}
