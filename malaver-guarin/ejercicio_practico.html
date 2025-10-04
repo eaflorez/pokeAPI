@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ejercicio Práctico - Pokédex</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+
+  <div class="search-container">
+    <h2 class="titulo">Ejercicio Práctico: ¡Mejorando la Pokédex!</h2>
+    <p class="small-info">Alumno: <strong>Oscar Jehir Malaver Guarin</strong></p>
+
+    <div class="search-actions">
+      <input type="text" id="inputNombre" class="search-input" placeholder="Buscar por nombre (ej: pikachu)" />
+      <button id="btnBuscarNombre" class="search-button">Buscar</button>
+    </div>
+
+    <div class="search-actions">
+      <input type="text" id="inputId" class="search-input" placeholder="Buscar por ID (ej: 25)" />
+      <button id="btnBuscarId" class="search-button">Buscar por ID</button>
+    </div>
+
+    <div id="statusMessage" class="message-box"></div>
+  </div>
+
+  <section class="card" id="pokemonCard">
+    <h1 class="titulo" id="cardTitle">Esperando búsqueda...</h1>
+    <div class="pokemon-display">
+      <h2 id="result_name" class="pokemon-name"></h2>
+      <img class="pokemon-img" src="" id="result_img" alt="Pokémon" />
+    </div>
+    <div id="pokemonDetails" class="result-grid"></div>
+  </section>
+
+  <script src="ejercicio_practico.js"></script>
+</body>
+</html>

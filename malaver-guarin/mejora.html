@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokedex - Una Sola Tarjeta</title>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="search_container">
+    <h2 class="titulo">Buscador Pokédex</h2>
+    <div class="search_acctions">
+      <input type="text" id="inputPokemon" class="search_input" placeholder="Escribe el nombre del Pokémon" />
+      <button id="btnBuscar" class="search-button">Buscar</button>
+    </div>
+    <div id="statusMessage" class="message-box"></div>
+  </div>
+
+  <section class="card" id="pokemonCard">
+    <h1 class="titulo" id="cardTitle">Cargando...</h1>
+    <div class="pokemon-display">
+      <h2 id="result_name" class="pokemon-name"></h2>
+      <img class="pokemon-img" src="" id="result_img" alt="Pokemon" />
+    </div>
+  </section>
+
+  <script src="mejora.js"></script>
+</body>
+</html>
