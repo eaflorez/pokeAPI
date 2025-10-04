@@ -1,6 +1,6 @@
 // 1. SELECCIÓN DE ELEMENTOS ---
 const $ = (id) => document.getElementById(id); // Función helper corta
-
+// Para commit
 // Variables de la tarjeta
 const tarjetaPokemonEl = $("pokemonCard");
 const tituloTarjetaEl = $("cardTitle");
