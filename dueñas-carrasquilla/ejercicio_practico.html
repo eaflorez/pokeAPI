@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex Mejorada</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="icon" type="image/png" href="pokemon.png"/>
+</head>
+<body>
+
+  <div class="search-container">
+    <h2 class="titulo">Buscador Pokédex</h2>
+    <div class="search-actions">
+      <input type="text" id="inputPokemon" class="search-input" placeholder="Nombre del Pokémon">
+      <button id="btnBuscar" class="search-button">Buscar por Nombre</button>
+    </div>
+    <div class="search-actions">
+      <input type="number" id="inputID" class="search-input" placeholder="ID del Pokémon" min="1">
+      <button id="btnBuscarID" class="search-button">Buscar por ID</button>
+    </div>
+    <div id="statusMessage" class="message-box"></div>
+  </div>
+
+  <section class="card" id="pokemonCard">
+    <h1 class="titulo" id="cardTitle">Cargando...</h1>
+    <div class="pokemon-display">
+      <h2 id="result_name" class="pokemon-name"></h2>
+      <img class="pokemon-img" src="" id="result_img" alt="Pokémon">
+      <div class="pokemon-details">
+        <p id="result_id"></p>
+        <p id="result_weight"></p>
+        <p id="result_height"></p>
+        <p id="result_abilities"></p>
+      </div>
+    </div>
+  </section>
+
+  <script src="mejora.js"></script>
+</body>
+</html> 
