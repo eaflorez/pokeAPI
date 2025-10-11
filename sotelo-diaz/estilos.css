@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    height: 100vh;
+}
+
+body{
+    min-height: 100vh;
+    background: url("https://cdn.pixabay.com/photo/2018/06/09/21/37/summer-thunder-storm-3465247_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CONTENEDOR DEL BUSCADOR */
+.search-container{
+    margin: 20px;
+    width: 90%;
+    max-width: 450px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.search-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-input{
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-input:focus{
+    border-color: #0070f0;
+    box-shadow: 0 0 5px rgba(35, 235, 0, 0.5);
+    outline: none;
+}
+
+.search-button{
+    padding: 10px;
+    background-color: #ffde00;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.search-button:hover{
+    background-color: #ffcc00;
+}
+
+.search-button:active{
+    transform: scale(0.95);
+}
+
+/* TARJETA PRINCIPAL */
+.card{
+    border: none;
+    border-radius: 15px;
+    margin: 15px 30px;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    background-color: #333;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.titulo{
+    font-size: 2rem;
+    text-align: center;
+    color: #ffde00;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 8px;
+}
+
+.pokemon-name{
+    color: #0070f0;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    margin: 8px 0;
+}
+
+/* IMAGEN DEL POKÉMON */
+.pokemon-img{
+    width: 80%;
+    max-height: 180px;
+    object-fit: contain;
+    margin: 10px auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.7));
+}
+
+/* MENSAJE DE ESTADO */
+.message-box{
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
