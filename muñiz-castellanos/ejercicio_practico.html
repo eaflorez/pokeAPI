@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex - Mejorada</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="search-container">
+    <h2 class="titulo">Buscador Pokédex</h2>
+
+    <!-- Buscar por nombre -->
+    <div class="search-actions">
+      <input type="text" id="inputPokemon" class="search-input" placeholder="Escribe el nombre del Pokémon">
+      <button id="btnBuscar" class="search-button">Buscar Nombre</button>
+    </div>
+
+    <!-- Buscar por ID -->
+    <div class="search-actions">
+      <input type="number" id="inputPokemonID" class="search-input" placeholder="Escribe el ID del Pokémon">
+      <button id="btnBuscarID" class="search-button">Buscar ID</button>
+    </div>
+
+    <div id="statusMessage" class="message-box"></div>
+  </div>
+
+  <!-- Tarjeta de resultados -->
+  <section class="card" id="pokemonCard">
+    <h1 class="titulo" id="cardTitle">Cargando...</h1>
+    <div class="pokemon-display">
+      <h2 id="result_name" class="pokemon-name"></h2>
+      <img class="pokemon-img" src="" id="result_img" alt="Pokémon">
+      <p id="result_id"></p>
+      <p id="result_weight"></p>
+      <p id="result_height"></p>
+      <div>
+        <h3>Habilidades:</h3>
+        <ul id="result_abilities"></ul>
+      </div>
+    </div>
+  </section>
+
+  <script src="ejercicio_practico.js"></script>
+</body>
+</html>
